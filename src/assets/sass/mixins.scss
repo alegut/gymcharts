@@ -1,0 +1,42 @@
+// MEDIA QUERY MANAGER
+
+//how to include:
+// @include respond(mobile) {
+//   margin: 0;
+// }
+
+@mixin respond($breakpoint) {
+    
+    @if $breakpoint == mobile {
+        @media only screen and (max-width: 48em) { @content };    //768px
+    }
+    @if $breakpoint == tablet {
+        @media only screen and (max-width: 64em) { @content };     //1024px
+    }
+    @if $breakpoint == laptop {
+        @media only screen and (max-width: 90em) { @content };    //1440px
+    }
+    @if $breakpoint == desktop {
+        @media only screen and (max-width: 120em) { @content };    //1920
+    }   
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin vertical {
+  display: flex;
+  align-items: center;
+}
