@@ -1,6 +1,6 @@
-<mat-toolbar color="warn" class="header-menu">
+<!-- <mat-toolbar color="warn" class="header-menu">
     <span class="header-menu-mobile">
-        <button mat-icon-button [matMenuTriggerFor]="menu">
+        <button mat-icon-button [matMenuTriggerFor]="menu" (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu" [overlapTrigger]="false">
@@ -11,17 +11,47 @@
             <button mat-menu-item>
                 <mat-icon>bar_chart</mat-icon>
                 <span>Cтатистика</span>
-            </button>           
+            </button>
             <button mat-menu-item>
                 <mat-icon>exit_to_app</mat-icon>
-                <span>Войти</span> 
+                <span>Войти</span>
             </button>
         </mat-menu>
     </span>
     <span class="header-menu-logo">Sportlife Tracker</span>
-    <div class="header-menu-desktop"> 
+    <div class="header-menu-desktop">
         <a mat-button routerLink="/trainings" routerLinkActive="active">Тренировки</a>
         <a mat-button routerLink="/statistics">Cтатистика</a>
         <a mat-button routerLink="/login" class="header-menu-link-right">Войти</a>
     </div>
-</mat-toolbar>
+</mat-toolbar> -->
+
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" [(opened)]="opened">
+
+        <button mat-menu-item>
+          <mat-icon>fitness_center</mat-icon>
+          <span>Тренировки</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>bar_chart</mat-icon>
+          <span>Cтатистика</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Войти</span>
+        </button>
+
+  </mat-sidenav>
+
+  <mat-toolbar color="warn" class="header-menu">
+        <mat-icon class="header-menu-mobile" (click)="sidenav.toggle()">menu</mat-icon>
+    <span class="header-menu-logo">Sportlife Tracker</span>
+    <div class="header-menu-desktop">
+      <a mat-button routerLink="/trainings" routerLinkActive="active">Тренировки</a>
+      <a mat-button routerLink="/statistics">Cтатистика</a>
+      <a mat-button routerLink="/login" class="header-menu-link-right">Войти</a>
+    </div>
+  </mat-toolbar>
+</mat-sidenav-container>
