@@ -1,0 +1,21 @@
+<div class="login-container">
+    <mat-card>
+        <mat-card-title>Вход</mat-card-title>
+        <mat-card-content>
+            <form novalidate [formGroup]="loginForm" (ngSubmit)="submit()">
+                
+                    <mat-form-field class="u-w100">
+                        <input type="text" id="email-input" matInput placeholder="email" formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field class="u-w100">
+                        <input type="text" id="password-input" matInput placeholder="пароль" formControlName="password">
+                    </mat-form-field>
+    
+                <div class="button">
+                    <button type="submit" mat-raised-button color="warn" mat-button>Войти</button>
+                </div>
+    
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
