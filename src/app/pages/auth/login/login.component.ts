@@ -1,22 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { UtilsService } from 'src/app/services/utils.service';
+import { LoadingService } from 'src/app/services/loading.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'st-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  public loginForm: FormGroup
+export class LoginComponent implements OnInit, OnDestroy {
+  public loginForm: FormGroup;
+  private subscriptions: Subscription[] = [];
+  private returnUrl : string;
+  
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private utilsService: UtilsService,
+    private loadingService: LoadingService,
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.createForm();
    }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
   }
+  
 
   private createForm(): void {
     this.loginForm = this.fb.group({
@@ -26,7 +41,24 @@ export class LoginComponent implements OnInit {
   }
 
   public submit(): void {
-    const {email, password} = this.loginForm.value;
+    this.loadingService.isLoading.next(true);
+    if(this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.subscriptions.push(
+        this.auth.login(email, password).subscribe(success => {
+          if(success) {
+            this.router.navigateByUrl(this.returnUrl)
+          } 
+          this.loadingService.isLoading.next(false);
+        })
+      )
+    }
+    this.loadingService.isLoading.next(false);
+    
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
  
 }

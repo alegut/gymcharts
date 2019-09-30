@@ -19,3 +19,17 @@ body{
   font-family: Roboto, "Helvetica Neue", sans-serif;
   box-sizing: border-box;
 }
+
+.mat-list {
+  padding-top: 0 !important;
+}
+
+.mat-list-item-content {
+  padding: 0 !important;
+}
+
+.red-snackbar {
+  background: $color-primary;
+  margin-bottom: 7.5rem !important;
+  min-width: 400px !important;
+}

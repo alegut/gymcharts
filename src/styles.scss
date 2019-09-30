@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import './src/assets/sass/base';
+
 @import './src/assets/sass/variables';
 @import './src/assets/sass/utilities';
 @import './src/assets/sass/mixins';
+
 @import './src/assets/sass/grid';
+@import './src/assets/sass/base';
 
 
 

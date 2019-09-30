@@ -9,14 +9,16 @@
     }
     &-mobile {
         display: none;
+        cursor: pointer;
+        margin-right: 1rem;
         @include respond(mobile) {
-            display: block; 
+            display: block;
         }
     }
     &-desktop {
         width: 100%;
         @include respond(mobile) {
-            display: none; 
+            display: none;
         }
     }
     &-link-right {

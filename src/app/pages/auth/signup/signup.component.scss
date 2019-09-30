@@ -1,6 +1,7 @@
 @import './src/assets/sass/variables';
+@import './src/assets/sass/mixins';
 
-.login-container {
+.signup-container {
     width: 100%;
     // height: 100%;
     margin-top: 9rem;
@@ -14,6 +15,7 @@
     mat-card-title {
         color: $color-primary;
     }
+    
     small {
         float: right;
         a {
