@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { TrainingsComponent } from './pages/trainings/trainings.component';
 import { AuthGuard } from './guards/auth.guard';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'trainings', component: TrainingsComponent, canActivate: [AuthGuard] },
+  { path: 'statistics', component: StatisticsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/login' },
 ];
 

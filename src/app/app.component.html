@@ -10,8 +10,8 @@
 
     <mat-sidenav-content>
       <st-header (navToggle)="opened =! opened"></st-header>
-      <main>
-        <router-outlet></router-outlet>
+      <main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+        <router-outlet #o="outlet"></router-outlet>
       </main>
       <st-footer></st-footer>
     </mat-sidenav-content>

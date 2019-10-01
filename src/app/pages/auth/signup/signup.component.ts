@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'st-signup',
@@ -20,6 +21,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     private auth: AuthService,
     private router: Router,
     private loadingService: LoadingService,
+    private utilsService: UtilsService
   ) {
     this.createForm();
   }
@@ -47,6 +49,8 @@ export class SignupComponent implements OnInit, OnDestroy {
         this.auth.signup(name, email, password).subscribe(success => {
           if(success) {
             this.router.navigate(['/trainings'])
+          } else {
+            this.utilsService.showSnackbar('Что-то пошло не так!');
           }
           this.loadingService.isLoading.next(false);
         })

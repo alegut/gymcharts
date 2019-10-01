@@ -8,7 +8,7 @@ export class UtilsService {
 
   constructor(private snackbar: MatSnackBar) {}
 
-  showSnackbar(message, action, duration, panelClass = ['red-snackbar']) {
+  showSnackbar(message, action=null, duration=3000, panelClass = ['red-snackbar']) {
     this.snackbar.open(message, action, {
       duration,
       panelClass

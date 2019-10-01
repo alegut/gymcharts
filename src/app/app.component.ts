@@ -1,11 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoadingService } from './services/loading.service';
 import { Subscription } from 'rxjs';
+import { fadeAnimation } from './animations/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AppComponent implements  OnInit, OnDestroy{
   public opened = false;

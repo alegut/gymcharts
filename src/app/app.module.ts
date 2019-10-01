@@ -18,6 +18,13 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { TrainingsComponent } from './pages/trainings/trainings.component';
 
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
+
 
 
 
@@ -30,8 +37,7 @@ import { TrainingsComponent } from './pages/trainings/trainings.component';
     MobileMenuComponent,
     SignupComponent,
     TrainingsComponent,
-    
-    
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,11 @@ import { TrainingsComponent } from './pages/trainings/trainings.component';
       primaryColour: '#f44336',
       secondaryColour: '#f44336',
       tertiaryColour: '#f44336'
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), // imports firebase/app needed for everything
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule // imports firebase/storage only needed for storage features
 
   ],
   providers: [NgxLoadingModule, AuthService, AuthGuard  ],
