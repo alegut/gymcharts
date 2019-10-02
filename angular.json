@@ -63,6 +63,24 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "uk": {
+              "aot": true,
+              "outputPath": "dist/ua/",
+              "baseHref": "/ua/",
+              "i18nFile": "src/locale/messages.uk.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "uk",
+              "i18nMissingTranslation": "error"
+            },
+            "ru": {
+              "aot": true,
+              "outputPath": "dist/ru/",
+              "baseHref": "/ru/",
+              "i18nFile": "src/locale/messages.ru.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "ru",
+              "i18nMissingTranslation": "error"
             }
           }
         },
@@ -74,6 +92,12 @@
           "configurations": {
             "production": {
               "browserTarget": "sportlife-tracker:build:production"
+            },
+            "uk": {
+              "browserTarget": "sportlife-tracker:build:uk"
+            },
+            "ru": {
+              "browserTarget": "sportlife-tracker:build:ru"
             }
           }
         },

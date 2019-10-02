@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,9 +24,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { registerLocaleData } from '@angular/common';
+import localeUk from '@angular/common/locales/uk';
+import localeUkExtra from '@angular/common/locales/extra/uk';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
-
-
+registerLocaleData(localeUk, 'uk', localeUkExtra);
 
 @NgModule({
   declarations: [
@@ -56,10 +59,16 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), // imports firebase/app needed for everything
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+
 
   ],
-  providers: [NgxLoadingModule, AuthService, AuthGuard  ],
+  providers: [NgxLoadingModule, AuthService, AuthGuard,
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: localStorage.getItem('lang') === 'ua' ? 'uk-UA' : 'ru-RU'
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

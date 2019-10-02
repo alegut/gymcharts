@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="f0c01f381e5077ae7e0f1a347af713e5ba285104" datatype="html">
+        <source>Тренировки</source>
+        <target>Тренування</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6b50bdd97343c2a005ec769ffdba45c546ceec29" datatype="html">
+        <source>
+                            Это обязательное поле
+                        </source>
+                        <target>Це обов'язкове поле</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/login/login.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/login/login.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fa9b8b176c9a612cb5b1e88061d078fefcf69ce3" datatype="html">
+        <source>
+                            Неправильный email
+                        </source>
+                        <target>Неправильний email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/login/login.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="814fb71ade0c859c7f08f1bd938d24b0d8824510" datatype="html">
+        <source>
+                            Не может быть менее 6 символов
+                        </source>
+                        <target>Не може бути менеше 6 символів</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/login/login.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a8e074e23b76d069c92fd119202c7f1535e6d436" datatype="html">
+        <source>
+            Это обязательное поле
+          </source>
+          <target>Це обов'язкове поле</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/signup/signup.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/signup/signup.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/signup/signup.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d40988237136d3f62281270c15a8c775b211d969" datatype="html">
+        <source>
+            Не может быть менее 6 символов
+          </source>
+          <target>Не може бути менеше 6 символів</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/signup/signup.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="658c96105457d88f198bae4d01e51f0374f4a77a" datatype="html">
+        <source>
+            Неправильный email
+          </source>
+          <target>Неправильний email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/signup/signup.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0c00d75dc777af6e2364e4067630d7fcfad9e1e1" datatype="html">
+        <source>
+            Не может быть менее 3 символов
+          </source>
+          <target>Не може бути менеше 6 символів</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/auth/signup/signup.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
