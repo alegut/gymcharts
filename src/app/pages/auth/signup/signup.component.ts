@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
+
 @Component({
   selector: 'st-signup',
   templateUrl: './signup.component.html',
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   public signupForm: FormGroup;
   private subscriptions: Subscription[] = [];
+
 
   constructor(
     private fb: FormBuilder,
@@ -50,13 +52,28 @@ export class SignupComponent implements OnInit, OnDestroy {
           if(success) {
             this.router.navigate(['/trainings'])
           } else {
+            this.loadingService.isLoading.next(false);
             this.utilsService.showSnackbar('Что-то пошло не так!');
           }
           this.loadingService.isLoading.next(false);
         })
       )
-    }    
+    }
   }
-  
-  
+
+  signInWithSocial(provider) {
+    this.loadingService.isLoading.next(true);
+    this.auth.signInWithSocial(provider).subscribe(success => {
+      if (success) {
+        this.router.navigate(['/trainings'])
+      } else {
+        this.utilsService.showSnackbar('Что-то пошло не так!');
+        this.loadingService.isLoading.next(false);
+      }
+      this.loadingService.isLoading.next(false);
+    });
+
+  }
+
+
 }

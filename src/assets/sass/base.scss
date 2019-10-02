@@ -15,7 +15,7 @@ html{
 }
 
 body{
-  margin: 0; 
+  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   box-sizing: border-box;
 }
@@ -38,4 +38,8 @@ router-outlet ~ * {
   background: $color-primary;
   margin-bottom: 7.5rem !important;
   min-width: 400px !important;
+}
+
+.mat-snack-bar-container {
+  max-width: 32rem !important;
 }

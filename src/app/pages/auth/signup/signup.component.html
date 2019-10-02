@@ -1,48 +1,52 @@
 <div class="signup-container">
-    <mat-card>
-        <mat-card-title>Регистрация</mat-card-title>
-        <mat-card-content>
-            <form novalidate [formGroup]="signupForm" (ngSubmit)="submit()">
+  <mat-card>
+    <mat-card-title>Регистрация</mat-card-title>
+    <mat-card-content>
+      <form novalidate [formGroup]="signupForm" (ngSubmit)="submit()">
 
-                
-                    <mat-form-field class="u-w100">
-                        <input type="text" id="name-input" matInput placeholder="Имя" formControlName="name">
-                        <mat-error i18n *ngIf="signupForm.get('name').hasError('required')">
-                            Это обязательное поле
-                        </mat-error>
-                        <mat-error i18n *ngIf="signupForm.get('name').hasError('minlength')">
-                            Не может быть менее 3 символов
-                        </mat-error>
-                    </mat-form-field>
-                    
-                
+        <mat-form-field class="u-w100">
+          <input type="text" id="name-input" matInput placeholder="Имя" formControlName="name">
+          <mat-error i18n *ngIf="signupForm.get('name').hasError('required')">
+            Это обязательное поле
+          </mat-error>
+          <mat-error i18n *ngIf="signupForm.get('name').hasError('minlength')">
+            Не может быть менее 6 символов
+          </mat-error>
+        </mat-form-field>
 
-                
-                <mat-form-field class="u-w100">
-                    <input type="email" id="email-input" matInput placeholder="email" formControlName="email">
-                    <mat-error i18n *ngIf="signupForm.get('email').hasError('required')">
-                        Это обязательное поле
-                    </mat-error>
-                    <mat-error i18n *ngIf="signupForm.get('email').hasError('email')">
-                        Неправильный email
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field class="u-w100">
-                    <input type="password" id="password-input" matInput placeholder="пароль" formControlName="password">
-                    <mat-error i18n *ngIf="signupForm.get('password').hasError('required')">
-                        Это обязательное поле
-                    </mat-error>
-                    <mat-error i18n *ngIf="signupForm.get('password').hasError('minlength')">
-                        Не может быть менее 3 символов
-                    </mat-error>
-                </mat-form-field>
+        <mat-form-field class="u-w100">
+          <input type="email" id="email-input" matInput placeholder="email" formControlName="email">
+          <mat-error i18n *ngIf="signupForm.get('email').hasError('required')">
+            Это обязательное поле
+          </mat-error>
+          <mat-error i18n *ngIf="signupForm.get('email').hasError('email')">
+            Неправильный email
+          </mat-error>
+        </mat-form-field>
 
-                <div class="button">
-                    <button type="submit" mat-raised-button color="warn" mat-button
-                        [disabled]="!signupForm.valid">Зарегистрироваться</button>
-                </div>
-            </form>
-            <small><a routerLink="/login">Уже есть аккаунт?</a></small>
-        </mat-card-content>
-    </mat-card>
+        <mat-form-field class="u-w100">
+          <input type="password" id="password-input" matInput placeholder="пароль" formControlName="password">
+          <mat-error i18n *ngIf="signupForm.get('password').hasError('required')">
+            Это обязательное поле
+          </mat-error>
+          <mat-error i18n *ngIf="signupForm.get('password').hasError('minlength')">
+            Не может быть менее 3 символов
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button">
+          <button type="submit" mat-raised-button color="warn" mat-button
+            [disabled]="!signupForm.valid">Зарегистрироваться</button>
+        </div>
+
+        <div class="u-mt20 social-container">
+          <a class="social" ><img src="../../../../assets/images/google.svg" alt="Войти с Google" (click)="signInWithSocial('google')"></a>
+          <a class="social" ><img src="../../../../assets/images/facebook.svg" alt="Войти с Google" (click)="signInWithSocial('facebook')"></a>
+          <small><a routerLink="/login">Уже есть аккаунт?</a></small>
+        </div>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
 </div>

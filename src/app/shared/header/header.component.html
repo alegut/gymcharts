@@ -3,13 +3,22 @@
     <button mat-icon-button (click)="toggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
-   
+
   </span>
   <span class="header-menu-logo">GymCharts</span>
   <div class="header-menu-desktop">
     <a mat-button routerLink="/trainings" routerLinkActive="active">Тренировки</a>
     <a mat-button routerLink="/statistics">Cтатистика</a>
-    <a *ngIf="!authService.currentUser" mat-button routerLink="/login" class="header-menu-link-right">Войти</a>
-    <a *ngIf="authService.currentUser" mat-button (click)="logout()" class="header-menu-link-right">Выйти</a>
+
+    <a *ngIf="!currentUser" mat-button routerLink="/login" class="header-menu-link-right">Войти</a>
+    <!-- <a *ngIf="currentUser" mat-button (click)="logout()" class="header-menu-link-right">Выйти</a> -->
+    <span [matMenuTriggerFor]="menu" mat-button *ngIf="currentUser" class="header-menu-link-right header-menu-profile">
+      <img [src]="currentUser.image" alt="" class="header-menu-profile-image">
+      <span>{{currentUser.name ? currentUser.name : currentUser.email}}</span>
+    </span>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item routerLink="/profile" >Профиль</button>
+      <button mat-menu-item (click)="logout()">Выйти</button>
+    </mat-menu>
   </div>
 </mat-toolbar>

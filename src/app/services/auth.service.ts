@@ -1,3 +1,4 @@
+import { UtilsService } from './utils.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, from } from 'rxjs';
@@ -6,10 +7,7 @@ import { of } from 'rxjs';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { switchMap } from 'rxjs/operators';
-
-
-
-
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +19,9 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private db: AngularFirestore
-  ) { 
+    private db: AngularFirestore,
+    private utilsService: UtilsService
+  ) {
     this.currentUser = this.afAuth.authState
       .pipe(
         switchMap((user) => {
@@ -34,36 +33,68 @@ export class AuthService {
         }
       )
     )
+    this.setCurrenUserSnapshot();
+  }
+
+  setUser(user) {
+    const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.user.uid}`);
+    const updatedUser = {
+      id: user.user.uid,
+      email: user.user.email,
+      datebirth: new Date(),
+      height: 0,
+      image: 'https://firebasestorage.googleapis.com/v0/b/gymcharts-46e9a.appspot.com/o/body.jpg?alt=media&token=f4ffeaaf-c84e-4b83-86c3-fb372a75ae07',
+      name,
+      role: 'payed_user',
+      weight: 0
+    }
+    userRef.set(updatedUser);
   }
 
   public signup(name: string, email: string, password: string): Observable<boolean> {
     return from(
       this.afAuth.auth.createUserWithEmailAndPassword(email, password)
         .then(user => {
-          const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.user.uid}`);
-          const updatedUser = {
-            id: user.user.uid, 
-            email: user.user.email,
-            datebirth: new Date(),
-            height: 0,
-            image: 'https://firebasestorage.googleapis.com/https://firebasestorage.googleapis.com/v0/b/gymcharts-46e9a.appspot.com/o/body.jpg?alt=media&token=f4ffeaaf-c84e-4b83-86c3-fb372a75ae07/b/chat-b093d.appspot.com/o/profile.jpg?alt=media&token=f2be4b4f-9835-41f9-a4d9-3bd67da9a361',
-            name,
-            role: 'payed_user',
-            weight: 0
-          }
-          userRef.set(updatedUser);
+          this.setUser(user);
           return true;
         })
         .catch((err) => false)
     )
   }
 
+  signInWithSocial(choosenProvider) {
+    let provider = null;
+    switch (choosenProvider) {
+      case 'google':
+        provider = new firebase.auth.GoogleAuthProvider();
+        break;
+      case 'facebook':
+        provider = new firebase.auth.FacebookAuthProvider();
+        break;
+    }
+
+    return from(
+      this.afAuth.auth.signInWithPopup(provider).then((user) => {
+        this.setUser(user);
+        return true;
+      })
+      .catch((error) => false)
+    );
+  }
+
   public login(email: string, password: string): Observable<boolean> {
-    return of(true);
+    return from(
+      this.afAuth.auth.signInWithEmailAndPassword(email, password)
+      .then(user => true)
+      .catch(err => false)
+    );
   }
 
   public logout(): void {
-    this.router.navigate(['/login'])
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/login']);
+      this.utilsService.showSnackbar('Вы успешно разлогинились!');
+    });
   }
 
   private setCurrenUserSnapshot(): void {

@@ -3,7 +3,7 @@
         <mat-card-title>Вход</mat-card-title>
         <mat-card-content>
             <form novalidate [formGroup]="loginForm" (ngSubmit)="submit()">
-                
+
                     <mat-form-field class="u-w100">
                         <input type="email" id="email-input" matInput placeholder="email" formControlName="email">
                         <mat-error i18n *ngIf="loginForm.get('email').hasError('required')">
@@ -19,15 +19,21 @@
                             Это обязательное поле
                         </mat-error>
                         <mat-error i18n *ngIf="loginForm.get('password').hasError('minlength')">
-                            Не может быть менее 3 символов
+                            Не может быть менее 6 символов
                         </mat-error>
                     </mat-form-field>
-    
+
                 <div class="button">
                     <button type="submit" mat-raised-button color="warn" mat-button [disabled]="!loginForm.valid && loginForm.touched">Войти</button>
                 </div>
+                <div class="u-mt20 social-container">
+                  <a class="social"><img src="../../../../assets/images/google.svg" alt="Войти с Google"
+                      (click)="signInWithSocial('google')"></a>
+                  <a class="social"><img src="../../../../assets/images/facebook.svg" alt="Войти с Google"
+                      (click)="signInWithSocial('facebook')"></a>
+                  <small><a routerLink="/signup">Регистрация</a></small>
+                </div>
             </form>
-            <small><a routerLink="/signup">Регистрация</a></small>
         </mat-card-content>
     </mat-card>
 </div>

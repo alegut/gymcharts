@@ -10,15 +10,19 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() navToggle = new EventEmitter<null>();
+  public currentUser: any = null;
 
   constructor(
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    })
   }
 
-  toggleSidenav() { 
+  toggleSidenav() {
     this.navToggle.emit();
   }
 

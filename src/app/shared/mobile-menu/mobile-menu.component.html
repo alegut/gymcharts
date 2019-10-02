@@ -17,9 +17,19 @@
         </a>
     </mat-list-item>
     <mat-list-item role="listitem">
-        <a mat-menu-item routerLink="login" (click)="toggleSidenav()">
+      <a mat-menu-item routerLink="/profile" (click)="toggleSidenav()" *ngIf="currentUser">
+        <mat-icon>face</mat-icon>
+        <span>Профиль</span>
+      </a>
+    </mat-list-item>
+    <mat-list-item role="listitem">
+        <a *ngIf="!currentUser" mat-menu-item routerLink="login" (click)="toggleSidenav()">
             <mat-icon>exit_to_app</mat-icon>
             <span>Войти</span>
+        </a>
+        <a *ngIf="currentUser" mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Выйти</span>
         </a>
     </mat-list-item>
 </mat-list>
