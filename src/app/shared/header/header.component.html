@@ -7,18 +7,21 @@
   </span>
   <span class="header-menu-logo">GymCharts</span>
   <div class="header-menu-desktop">
-    <a mat-button routerLink="/trainings" routerLinkActive="active">Тренировки</a>
-    <a mat-button routerLink="/statistics">Cтатистика</a>
+    <a mat-button routerLink="/trainings" routerLinkActive="active" [innerHTML]="'trainings' | translate"></a>
+    <a mat-button routerLink="/statistics" [innerHTML]="'statistycs' | translate"></a>
 
     <a *ngIf="!currentUser" mat-button routerLink="/login" class="header-menu-link-right">Войти</a>
     <!-- <a *ngIf="currentUser" mat-button (click)="logout()" class="header-menu-link-right">Выйти</a> -->
+
     <span [matMenuTriggerFor]="menu" mat-button *ngIf="currentUser" class="header-menu-link-right header-menu-profile">
       <img [src]="currentUser.image" alt="" class="header-menu-profile-image">
       <span>{{currentUser.name ? currentUser.name : currentUser.email}}</span>
     </span>
-    <mat-menu #menu="matMenu" xPosition="before">
+
+    <mat-menu #menu="matMenu" xPosition="before" class="header-menu-dropdown">
       <button mat-menu-item routerLink="/profile" >Профиль</button>
       <button mat-menu-item (click)="logout()">Выйти</button>
     </mat-menu>
+
   </div>
 </mat-toolbar>

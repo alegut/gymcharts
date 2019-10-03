@@ -1,0 +1,13 @@
+{
+  "trainings": "Тренировки",
+  "statistycs": "Статистика",
+  "entrance": "Вход",
+  "enter": "Войти",
+  "required": "Это обязательное поле",
+  "wrongemail": "Неправильный email",
+  "minlength": "Не может быть менее 6 символов",
+  "registration": "Регистрация",
+  "register": "Зарегистрироваться",
+  "enterwithgoogle": "Войти с Google",
+  "enterwithfacebook": "Войти с Facebook"
+}

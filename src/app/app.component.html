@@ -2,8 +2,8 @@
 </ngx-loading>
 
 
-<div class="wrapper">
-  <mat-sidenav-container>
+<div class="wrapper" >
+  <mat-sidenav-container [ngStyle]="{'background-image': 'url(assets/images/gym.jpg)'}">
     <mat-sidenav mode="over" [(opened)]="opened">
       <st-mobile-menu (navToggle)="opened =! opened"></st-mobile-menu>
     </mat-sidenav>

@@ -1,3 +1,4 @@
+import { LanguageInterface } from './../../../interfaces/language';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public loginForm: FormGroup;
   private subscriptions: Subscription[] = [];
   private returnUrl : string;
+  public lang: LanguageInterface;
 
   constructor(
     private fb: FormBuilder,
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/trainings';
+    this.lang = this.utilsService.getOppositeLanguage();
   }
 
   private createForm(): void {
@@ -76,6 +79,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loadingService.isLoading.next(false);
     });
     this.loadingService.isLoading.next(false);
+  }
+
+  switchLang() {
+    this.utilsService.switchLanguage();
+    this.lang = this.utilsService.getOppositeLanguage();
   }
 
 }

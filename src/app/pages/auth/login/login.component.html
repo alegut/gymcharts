@@ -1,37 +1,34 @@
 <div class="login-container">
     <mat-card>
-        <mat-card-title>Вход</mat-card-title>
+        <mat-card-title>
+          <div class="login-container-title">
+            <span [translate]="'entrance'">Вход</span>
+            <a (click)="switchLang()">{{lang.long}}</a>
+          </div>
+        </mat-card-title>
         <mat-card-content>
             <form novalidate [formGroup]="loginForm" (ngSubmit)="submit()">
 
                     <mat-form-field class="u-w100">
                         <input type="email" id="email-input" matInput placeholder="email" formControlName="email">
-                        <mat-error i18n *ngIf="loginForm.get('email').hasError('required')">
-                            Это обязательное поле
-                        </mat-error>
-                        <mat-error i18n *ngIf="loginForm.get('email').hasError('email')">
-                            Неправильный email
-                        </mat-error>
+                        <mat-error [translate]="'required'" *ngIf="loginForm.get('email').hasError('required')"></mat-error>
+                        <mat-error [translate]="'wrongemail'" *ngIf="loginForm.get('email').hasError('email')"></mat-error>
                     </mat-form-field>
                     <mat-form-field class="u-w100">
                         <input type="password" id="password-input" matInput placeholder="пароль" formControlName="password">
-                        <mat-error i18n *ngIf="loginForm.get('password').hasError('required')">
-                            Это обязательное поле
-                        </mat-error>
-                        <mat-error i18n *ngIf="loginForm.get('password').hasError('minlength')">
-                            Не может быть менее 6 символов
-                        </mat-error>
+                        <mat-error [translate]="'required'" *ngIf="loginForm.get('password').hasError('required')"></mat-error>
+                        <mat-error [translate]="'minlength'" *ngIf="loginForm.get('password').hasError('minlength')"></mat-error>
                     </mat-form-field>
 
                 <div class="button">
-                    <button type="submit" mat-raised-button color="warn" mat-button [disabled]="!loginForm.valid && loginForm.touched">Войти</button>
+                    <button type="submit" mat-raised-button color="warn" mat-button [disabled]="!loginForm.valid && loginForm.touched" [innerHTML]="'enter' | translate"></button>
                 </div>
                 <div class="u-mt20 social-container">
-                  <a class="social"><img src="../../../../assets/images/google.svg" alt="Войти с Google"
+                  <a class="social"><img src="../../../../assets/images/google.svg" [alt]="'enterwithgoogle' | translate" [title]="'enterwithgoogle' | translate"
                       (click)="signInWithSocial('google')"></a>
-                  <a class="social"><img src="../../../../assets/images/facebook.svg" alt="Войти с Google"
+                  <a class="social"><img src="../../../../assets/images/facebook.svg" [alt]="'enterwithfacebook' | translate" [title]="'enterwithfacebook' | translate"
                       (click)="signInWithSocial('facebook')"></a>
-                  <small><a routerLink="/signup">Регистрация</a></small>
+                  <small><a routerLink="/signup" [translate]="'registration'"></a></small>
                 </div>
             </form>
         </mat-card-content>

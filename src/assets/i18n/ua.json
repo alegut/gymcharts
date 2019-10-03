@@ -1,0 +1,13 @@
+{
+  "trainings": "Тренування",
+  "statistycs": "Статистика",
+  "entrance": "Вхід",
+  "enter": "Увійти",
+  "required": "Це обов'язкове поле",
+  "wrongemail": "Неправильний email",
+  "minlength": "Не може бути меньше 6 символів",
+  "registration": "Реєстрація",
+  "register": "Зареєструватися",
+  "enterwithgoogle": "Увійти з Google",
+  "enterwithfacebook": "Увійти з Facebook"
+}

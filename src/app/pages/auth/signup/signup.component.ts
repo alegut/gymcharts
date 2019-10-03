@@ -1,3 +1,4 @@
+import { LanguageInterface } from './../../../interfaces/language';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -16,6 +17,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   public signupForm: FormGroup;
   private subscriptions: Subscription[] = [];
+  public lang: LanguageInterface;
 
 
   constructor(
@@ -29,6 +31,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.lang = this.utilsService.getOppositeLanguage();
   }
 
   ngOnDestroy() {
@@ -72,7 +75,11 @@ export class SignupComponent implements OnInit, OnDestroy {
       }
       this.loadingService.isLoading.next(false);
     });
+  }
 
+  switchLang() {
+    this.utilsService.switchLanguage();
+    this.lang = this.utilsService.getOppositeLanguage();
   }
 
 
