@@ -22,8 +22,11 @@ body{
 
 router-outlet ~ * {
   position: absolute;
-  height: 100%;
   width: 100%;
+  height: calc(100% - 12.8rem);
+  @include respond(mobile) {
+      height: calc(100% - 11.2rem);
+  }
 }
 
 .mat-list {

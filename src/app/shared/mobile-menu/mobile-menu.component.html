@@ -7,29 +7,29 @@
     <mat-list-item role="listitem">
         <a mat-menu-item routerLink="/trainings" (click)="toggleSidenav()">
             <mat-icon>fitness_center</mat-icon>
-            <span>Тренировки</span>
+            <span [innerHTML]="'trainings' | translate"></span>
         </a>
     </mat-list-item>
     <mat-list-item role="listitem">
         <a mat-menu-item routerLink="/statistics" (click)="toggleSidenav()">
             <mat-icon>bar_chart</mat-icon>
-            <span>Cтатистика</span>
+            <span [innerHTML]="'statistycs' | translate"></span>
         </a>
     </mat-list-item>
-    <mat-list-item role="listitem">
-      <a mat-menu-item routerLink="/profile" (click)="toggleSidenav()" *ngIf="currentUser">
+    <mat-list-item role="listitem" *ngIf="currentUser">
+      <a mat-menu-item routerLink="/profile" (click)="toggleSidenav()">
         <mat-icon>face</mat-icon>
-        <span>Профиль</span>
+        <span [innerHTML]="'profile' | translate"></span>
       </a>
     </mat-list-item>
     <mat-list-item role="listitem">
         <a *ngIf="!currentUser" mat-menu-item routerLink="login" (click)="toggleSidenav()">
             <mat-icon>exit_to_app</mat-icon>
-            <span>Войти</span>
+            <span [innerHTML]="'enter' | translate"></span>
         </a>
         <a *ngIf="currentUser" mat-menu-item (click)="logout()">
           <mat-icon>exit_to_app</mat-icon>
-          <span>Выйти</span>
+          <span [innerHTML]="'logout' | translate"></span>
         </a>
     </mat-list-item>
 </mat-list>

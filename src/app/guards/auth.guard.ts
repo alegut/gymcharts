@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { map, take, tap } from 'rxjs/operators';
 import { UtilsService } from '../services/utils.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class AuthGuard implements CanActivate {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private translate: TranslateService
   ){}
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -22,7 +24,7 @@ export class AuthGuard implements CanActivate {
       map((currentUser) => !!currentUser),
       tap((loggedIn) => {
         if (!loggedIn) {
-          this.utilsService.showSnackbar('Вам нужно залогониться, чтобы иметь доступ к этой странице');
+          this.utilsService.showSnackbar(this.translate.instant('shouldlogin'));
           this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         }
       })

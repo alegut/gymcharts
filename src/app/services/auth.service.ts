@@ -8,6 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { AngularFireAuth } from '@angular/fire/auth';
 import { switchMap } from 'rxjs/operators';
 import * as firebase from 'firebase';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class AuthService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private translate: TranslateService
   ) {
     this.currentUser = this.afAuth.authState
       .pipe(
@@ -93,7 +95,7 @@ export class AuthService {
   public logout(): void {
     this.afAuth.auth.signOut().then(() => {
       this.router.navigate(['/login']);
-      this.utilsService.showSnackbar('Вы успешно разлогинились!');
+      this.utilsService.showSnackbar(this.translate.instant('logoutsuccess'));
     });
   }
 

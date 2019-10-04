@@ -6,6 +6,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'st-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private loadingService: LoadingService,
     private auth: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translate: TranslateService
   ) {
     this.createForm();
    }
@@ -65,7 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private displayFailedLogin() {
-    this.utilsService.showSnackbar('Попытка входа не удалась! Проверьте вводимые данные, пожалуйста!');
+    this.utilsService.showSnackbar(this.translate.instant('enterfailed'));
   }
 
   signInWithSocial(provider) {
@@ -74,7 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       if (success) {
         this.router.navigate(['/trainings'])
       } else {
-        this.utilsService.showSnackbar('Что-то пошло не так!');
+        this.utilsService.showSnackbar(this.translate.instant('somethingwrong'));
       }
       this.loadingService.isLoading.next(false);
     });

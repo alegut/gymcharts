@@ -9,5 +9,11 @@
   "registration": "Регистрация",
   "register": "Зарегистрироваться",
   "enterwithgoogle": "Войти с Google",
-  "enterwithfacebook": "Войти с Facebook"
+  "enterwithfacebook": "Войти с Facebook",
+  "profile": "Профиль",
+  "logout": "Выйти",
+  "somethingwrong": "Что-то пошло не так!",
+  "enterfailed": "Попытка входа не удалась! Проверьте вводимые данные, пожалуйста!",
+  "logoutsuccess": "Вы успешно разлогинились!",
+  "shouldlogin": "Вам нужно залогониться, чтобы иметь доступ к этой странице"
 }

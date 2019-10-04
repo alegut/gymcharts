@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     private auth: AuthService,
     private router: Router,
     private loadingService: LoadingService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private translate: TranslateService
   ) {
     this.createForm();
   }
@@ -56,7 +58,7 @@ export class SignupComponent implements OnInit, OnDestroy {
             this.router.navigate(['/trainings'])
           } else {
             this.loadingService.isLoading.next(false);
-            this.utilsService.showSnackbar('Что-то пошло не так!');
+            this.utilsService.showSnackbar(this.translate.instant('somethingwrong'));
           }
           this.loadingService.isLoading.next(false);
         })
@@ -70,7 +72,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       if (success) {
         this.router.navigate(['/trainings'])
       } else {
-        this.utilsService.showSnackbar('Что-то пошло не так!');
+        this.utilsService.showSnackbar(this.translate.instant('somethingwrong'));
         this.loadingService.isLoading.next(false);
       }
       this.loadingService.isLoading.next(false);
