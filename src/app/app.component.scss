@@ -3,12 +3,14 @@
 
 .wrapper {
     height: 100vh;
+    max-height: 100vh;
     // display: flex;
     // flex-direction: column;
     // justify-content: space-between;
     // background-size: cover;
     main {
       height: 100%;
+      overflow: scroll;
         // height: calc(100% - 12.8rem);
         // @include respond(mobile) {
         //     height: calc(100% - 11.2rem);

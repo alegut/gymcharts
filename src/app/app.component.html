@@ -3,14 +3,16 @@
 
 
 <div class="wrapper" >
-  <mat-sidenav-container [ngStyle]="{'background-image': 'url(assets/images/gym.jpg)'}">
+  <!-- <mat-sidenav-container [ngStyle]="{'background-image': 'url(assets/images/gym.jpg)'}"> -->
+    <mat-sidenav-container>
     <mat-sidenav mode="over" [(opened)]="opened">
       <st-mobile-menu (navToggle)="opened =! opened"></st-mobile-menu>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <st-header (navToggle)="opened =! opened"></st-header>
-      <main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+      <!-- <main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''"> -->
+        <main>
         <router-outlet #o="outlet"></router-outlet>
       </main>
       <st-footer></st-footer>

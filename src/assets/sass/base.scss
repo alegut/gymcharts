@@ -16,12 +16,13 @@ html{
 
 body{
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Roboto Slab', serif !important;
   box-sizing: border-box;
 }
 
 router-outlet ~ * {
-  position: absolute;
+  // position: absolute;
   width: 100%;
   height: calc(100% - 12.8rem);
   @include respond(mobile) {

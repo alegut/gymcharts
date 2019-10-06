@@ -5,6 +5,7 @@ import { SignupComponent } from './pages/auth/signup/signup.component';
 import { TrainingsComponent } from './pages/trainings/trainings.component';
 import { AuthGuard } from './guards/auth.guard';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'trainings', component: TrainingsComponent, canActivate: [AuthGuard] },
   { path: 'statistics', component: StatisticsComponent, canActivate: [AuthGuard] },
+  { path: 'profile/:userId', component: ProfileComponent, canActivate: [AuthGuard] },
+  // { path: 'profile/:userId/edit', component: EditProfileComponent, canActivate: [AuthGuard, IsOwnerGuard] },
   { path: '**', redirectTo: '/login' },
 ];
 

@@ -19,7 +19,7 @@
     </span>
 
     <mat-menu #menu="matMenu" xPosition="before" class="header-menu-dropdown">
-      <button mat-menu-item routerLink="/profile" [innerHTML]="'profile' | translate"></button>
+      <button mat-menu-item [routerLink]="'/profile/' + currentUser?.id" [innerHTML]="'profile' | translate"></button>
       <button mat-menu-item (click)="logout()" [innerHTML]="'logout' | translate"></button>
     </mat-menu>
 

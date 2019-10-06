@@ -1,0 +1,29 @@
+.no-photo {
+  height: 150px;
+  width: 150px;
+  margin: 1em 0;
+  color: white;
+  border-radius: 50%;
+}
+
+.profile {
+    mat-card {
+        max-width: 40rem;
+        margin: auto;
+        text-align: center;
+        mat-card-title {
+            font-family: 'Roboto Slab', serif !important;
+        }
+        mat-card-content {
+            font-family: 'Raleway', sans-serif !important;
+        }
+        div {
+            margin-bottom: 1rem;
+        }
+    }
+    &-pic {
+        max-width: 150px;
+        max-height: 150px;
+        margin: 1em 0;
+    }   
+}

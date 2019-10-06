@@ -27,6 +27,7 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 
@@ -45,7 +46,8 @@ export function createTranslateLoader(http: HttpClient) {
     MobileMenuComponent,
     SignupComponent,
     TrainingsComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
