@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from 'firebase';
+// import { User } from 'firebase';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { LoadingService } from 'src/app/services/loading.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'st-profile',
@@ -37,6 +38,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
         const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${userId}`);
         userRef.valueChanges().subscribe(user => {
           this.user = user;
+          console.log(user);
+
         });
       })
     );

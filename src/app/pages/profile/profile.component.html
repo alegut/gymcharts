@@ -7,14 +7,14 @@
             </mat-card-title>
             <mat-card-content>
                 <img [src]="user?.image" [alt]="user?.name" class="rounded-circle mx-auto d-block profile-pic">
-                <div>Дата рождения: {{user?.datebirth.toDate() | date: 'dd.MM.yyyy'}}</div>
+                <div>Дата рождения: {{user?.datebirth['seconds'] * 1000 | date: 'dd.MM.yyyy'}}</div>
                 <div>Вес: {{user?.weight}} кг.</div>
                 <div>Рост: {{user?.height}} см.</div>
                 <div><button [routerLink]="'/profile/' + currentUser?.id + '/edit'" mat-raised-button color="warn">Редактировать профиль</button>
                 </div>
             </mat-card-content>
         </mat-card>
-    </div>   
+    </div>
 </div>
 
 <ng-template #noPhoto>
