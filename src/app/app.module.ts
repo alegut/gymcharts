@@ -8,7 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginComponent } from './pages/auth/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MobileMenuComponent } from './shared/mobile-menu/mobile-menu.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { SharedModule } from './shared/shared.module';
@@ -28,6 +28,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 
 
 
@@ -47,12 +50,14 @@ export function createTranslateLoader(http: HttpClient) {
     SignupComponent,
     TrainingsComponent,
     StatisticsComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MaterialModule,
     ReactiveFormsModule,
     SharedModule,
@@ -74,7 +79,8 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    ImageCropperModule
 
 
   ],

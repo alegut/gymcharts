@@ -38,8 +38,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${userId}`);
         userRef.valueChanges().subscribe(user => {
           this.user = user;
-          console.log(user);
-
         });
       })
     );

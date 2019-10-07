@@ -34,6 +34,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/trainings';
     this.lang = this.utilsService.getOppositeLanguage();
+    this.subscriptions.push(
+      this.auth.currentUser.subscribe(user => {
+        if(!!user) {
+          this.router.navigateByUrl('/trainings');
+        }
+      })
+    )
   }
 
   private createForm(): void {

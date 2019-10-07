@@ -1,0 +1,54 @@
+<div class="container">
+
+  <mat-card>
+
+    <mat-card-title>
+      Редактирование профиля
+    </mat-card-title>
+
+    <mat-card-content>
+      <div *ngIf="currentUser else noPhoto">
+        <img *ngIf="!downloadUrl" [src]="currentUser.image" alt="profile-pic"
+          class="rounded-circle mx-auto d-block profile-pic">
+        <img *ngIf="downloadUrl && downloadUrl.length > 0" [src]="downloadUrl" alt="profile-pic"
+          class="rounded-circle mx-auto d-block profile-pic">
+      </div>
+
+
+      <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+        [resizeToWidth]="100" format="png" (imageCropped)="imageCropped($event)" (loadImageFailed)="loadImageFailed()"
+        [outputType]="file" [roundCropper]="true"></image-cropper>
+      <button type="button" mat-raised-button (click)="fileInput.click()" color="warn">Выберите файл</button>
+      <input hidden (change)="fileChangeEvent($event)" #fileInput type="file" id="file">
+
+      <div>
+        <mat-form-field>
+          <input placeholder="Имя" matInput [(ngModel)]="currentUser.name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input placeholder="Вес" matInput [(ngModel)]="currentUser.weight">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input placeholder="Рост" matInput [(ngModel)]="currentUser.height">
+        </mat-form-field>
+      </div>
+      <div>
+        <button type="button" mat-raised-button (click)="save()" color="warn">Сохранить профиль</button>
+      </div>
+      <ng-template #noPhoto>
+        <div class="no-photo d-flex justify-content-center align-items-center">
+          No Photo
+        </div>
+      </ng-template>
+    </mat-card-content>
+
+  </mat-card>
+
+
+
+</div>
+
