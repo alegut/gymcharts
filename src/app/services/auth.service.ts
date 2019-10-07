@@ -73,6 +73,9 @@ export class AuthService {
       case 'facebook':
         provider = new firebase.auth.FacebookAuthProvider();
         break;
+      case 'twitter':
+        provider = new firebase.auth.TwitterAuthProvider();
+        break;
     }
 
     return from(
