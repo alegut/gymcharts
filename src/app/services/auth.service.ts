@@ -77,7 +77,9 @@ export class AuthService {
 
     return from(
       this.afAuth.auth.signInWithPopup(provider).then((user) => {
-        this.setUser(user);
+        if(user.additionalUserInfo.isNewUser) {
+          this.setUser(user);
+        }
         return true;
       })
       .catch((error) => false)

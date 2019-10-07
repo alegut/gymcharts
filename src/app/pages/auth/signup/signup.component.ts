@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(sub => sub.unsubscribe())
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   private createForm(): void {
