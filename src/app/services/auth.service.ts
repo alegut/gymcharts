@@ -46,7 +46,7 @@ export class AuthService {
       datebirth: new Date(),
       height: 0,
       image: 'https://firebasestorage.googleapis.com/v0/b/gymcharts-46e9a.appspot.com/o/body.jpg?alt=media&token=f4ffeaaf-c84e-4b83-86c3-fb372a75ae07',
-      name,
+      name: user.name,
       role: 'payed_user',
       weight: 0
     }
@@ -57,6 +57,7 @@ export class AuthService {
     return from(
       this.afAuth.auth.createUserWithEmailAndPassword(email, password)
         .then(user => {
+          user['name'] = name;
           this.setUser(user);
           return true;
         })
