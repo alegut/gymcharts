@@ -16,8 +16,8 @@ html{
 
 body{
   margin: 0;
-  // font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-family: 'Roboto Slab', serif !important;
+  font-family: Raleway, "Helvetica Neue", sans-serif;
+  // font-family: 'Roboto Slab', serif !important;
   box-sizing: border-box;
 }
 
@@ -28,6 +28,10 @@ router-outlet ~ * {
   @include respond(mobile) {
       height: calc(100% - 11.2rem);
   }
+}
+
+mat-card-title {
+  font-family: 'Roboto Slab', serif !important;
 }
 
 .mat-list {

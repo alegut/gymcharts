@@ -102,10 +102,10 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.id}`);
     userRef.set(user)
       .then(() => {
-        this.utilsService.showSnackbar('Ваш профиль успешно обновлен');
+        this.utilsService.showSnackbar(this.translate.instant('profileupdated'));
       })
       .catch(error => {
-        this.utilsService.showSnackbar('Ваш профиль не обновлен из-за ошибки');
+        this.utilsService.showSnackbar(this.translate.instant('profilesavingfailed'));
       });
     this.location.back();
   }
@@ -116,7 +116,10 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
     this.downloadUrl = this.croppedImage;
+  }
 
+  loadImageFailed() {
+    this.utilsService.showSnackbar(this.translate.instant('imageloadfailed'));
   }
 
   ngOnDestroy() {

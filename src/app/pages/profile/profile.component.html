@@ -7,10 +7,10 @@
             </mat-card-title>
             <mat-card-content>
                 <img [src]="user?.image" [alt]="user?.name" class="rounded-circle mx-auto d-block profile-pic">
-                <div>Дата рождения: {{user?.datebirth['seconds'] * 1000 | date: 'dd.MM.yyyy'}}</div>
-                <div>Вес: {{user?.weight}} кг.</div>
-                <div>Рост: {{user?.height}} см.</div>
-                <div><button [routerLink]="'/profile/' + currentUser?.id + '/edit'" mat-raised-button color="warn">Редактировать профиль</button>
+                <div>{{'birthdate' | translate}}: {{user?.datebirth['seconds'] * 1000 | date: 'dd.MM.yyyy'}}</div>
+                <div>{{'weight' | translate}}: {{user?.weight}} кг.</div>
+                <div>{{'height' | translate}}: {{user?.height}} см.</div>
+                <div><button [routerLink]="'/profile/' + currentUser?.id + '/edit'" mat-raised-button color="warn" [innerHTML]="'editprofile' | translate"></button>
                 </div>
             </mat-card-content>
         </mat-card>
@@ -19,7 +19,7 @@
 
 <ng-template #noPhoto>
     <div class="no-photo d-flex justify-content-center align-items-center">
-        No Photo
+        {{'nophoto' | translate}}
     </div>
 </ng-template>
 

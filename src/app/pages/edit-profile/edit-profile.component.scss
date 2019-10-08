@@ -21,3 +21,17 @@ input, textarea {
   width: 100%;
   font-weight: 200;
 }
+
+mat-card {
+  max-width: 40rem;
+  margin: 5rem auto;
+  text-align: center;
+  .image-container {
+    img {
+      margin-bottom: 0;
+    }
+  }
+  .inputs {
+    margin: 2rem 0 .5rem;
+  }
+}

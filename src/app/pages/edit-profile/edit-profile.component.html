@@ -3,41 +3,53 @@
   <mat-card>
 
     <mat-card-title>
-      Редактирование профиля
+      {{'editprofile' | translate}}
     </mat-card-title>
 
     <mat-card-content>
-      <div *ngIf="currentUser else noPhoto">
+      <div *ngIf="currentUser else noPhoto" class="image-container">
         <img *ngIf="!downloadUrl" [src]="currentUser.image" alt="profile-pic"
-          class="rounded-circle mx-auto d-block profile-pic">
+          class="rounded-circle">
         <img *ngIf="downloadUrl && downloadUrl.length > 0" [src]="downloadUrl" alt="profile-pic"
-          class="rounded-circle mx-auto d-block profile-pic">
+          class="rounded-circle">
       </div>
-
 
       <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
         [resizeToWidth]="100" format="png" (imageCropped)="imageCropped($event)" (loadImageFailed)="loadImageFailed()"
-        [outputType]="file" [roundCropper]="true"></image-cropper>
-      <button type="button" mat-raised-button (click)="fileInput.click()" color="warn">Выберите файл</button>
+         [roundCropper]="true"></image-cropper>
+      <button type="button" mat-raised-button (click)="fileInput.click()" color="warn">{{'changephoto' | translate}}</button>
       <input hidden (change)="fileChangeEvent($event)" #fileInput type="file" id="file">
 
-      <div>
-        <mat-form-field>
-          <input placeholder="Имя" matInput [(ngModel)]="currentUser.name">
-        </mat-form-field>
+      <div class="inputs">
+        <div>
+          <mat-form-field *ngIf="currentUser">
+            <input placeholder="{{'name' | translate}}" matInput [(ngModel)]="currentUser.name" name="name" #name="ngModel" required>
+            <div *ngIf="name.invalid">
+              <mat-error [translate]="'required'" *ngIf="name.errors.required"></mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field *ngIf="currentUser">
+            <input type="number" placeholder="{{'weight' | translate}}" matInput [(ngModel)]="currentUser.weight" name="weight" #weight="ngModel" required>
+            <div *ngIf="weight.invalid">
+              <mat-error [translate]="'required'" *ngIf="weight.errors.required"></mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field *ngIf="currentUser">
+            <input type="number" placeholder="{{'height' | translate}}" matInput [(ngModel)]="currentUser.height" name="height" #height="ngModel" required>
+            <div *ngIf="height.invalid">
+              <mat-error [translate]="'required'" *ngIf="height.errors.required"></mat-error>
+            </div>
+          </mat-form-field>
+        </div>
       </div>
+
+
       <div>
-        <mat-form-field>
-          <input placeholder="Вес" matInput [(ngModel)]="currentUser.weight">
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <input placeholder="Рост" matInput [(ngModel)]="currentUser.height">
-        </mat-form-field>
-      </div>
-      <div>
-        <button type="button" mat-raised-button (click)="save()" color="warn">Сохранить профиль</button>
+        <button type="button" mat-raised-button (click)="save()" color="warn">{{'saveprofile' | translate}}</button>
       </div>
       <ng-template #noPhoto>
         <div class="no-photo d-flex justify-content-center align-items-center">
