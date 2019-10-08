@@ -17,9 +17,9 @@
         </a>
     </mat-list-item>
     <mat-list-item role="listitem" *ngIf="currentUser">
-      <a mat-menu-item routerLink="/profile" (click)="toggleSidenav()">
+      <a mat-menu-item [routerLink]="'/profile/' + currentUser?.id" (click)="toggleSidenav()">
         <mat-icon>face</mat-icon>
-        <span [innerHTML]="'profile' | translate"></span>
+        <span [innerHTML]="'profile' | translate" ></span>
       </a>
     </mat-list-item>
     <mat-list-item role="listitem">
