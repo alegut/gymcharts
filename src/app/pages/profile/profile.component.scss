@@ -11,19 +11,14 @@
         max-width: 40rem;
         margin: 5rem auto;
         text-align: center;
-        mat-card-title {
-            font-family: 'Roboto Slab', serif !important;
-        }
-        mat-card-content {
-            font-family: 'Raleway', sans-serif !important;
-        }
         div {
             margin-bottom: 1rem;
         }
     }
     &-pic {
-        max-width: 150px;
-        max-height: 150px;
+        width: 15rem;
+        height: 15rem;
         margin: 1em 0;
+        border-radius: 50%;
     }
 }
