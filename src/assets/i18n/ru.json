@@ -27,6 +27,7 @@
   "saveprofile": "Сохранить профиль",
   "profileupdated": "Ваш профиль успешно обновлен",
   "profilesavingfailed": "Ваш профиль не обновлен из-за ошибки",
-  "imageloadfailed": "Изображение не удалось загрузить"
+  "imageloadfailed": "Изображение не удалось загрузить",
+  "starttraining": "Начать тренировку"
 
 }

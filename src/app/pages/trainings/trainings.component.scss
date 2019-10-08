@@ -1,0 +1,15 @@
+@import './src/assets/sass/mixins';
+.start-training {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    font-size: 4rem;
+    padding: 2rem 3.5rem;
+    @include respond(mobile) {
+      font-size: 2rem;
+      padding: 1rem 2.5rem;
+    }
+  }
+}

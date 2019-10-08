@@ -10,7 +10,8 @@
     // background-size: cover;
     main {
       height: 100%;
-      overflow: scroll;
+      // overflow: scroll;
+      overflow-y: auto;
         // height: calc(100% - 12.8rem);
         // @include respond(mobile) {
         //     height: calc(100% - 11.2rem);
