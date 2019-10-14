@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public currentUser: any = null;
   public user: User;
   private subscriptions: Subscription[] = [];
-  private yearsOld: number = null;
+  yearsOld: number = null;
 
   constructor(
     private auth: AuthService,
@@ -41,8 +41,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
         const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${userId}`);
         userRef.valueChanges().subscribe(user => {
           this.user = user;
-          this.yearsOld = moment().diff(this.user.datebirth['seconds'] * 1000, 'years');
-          
+          if (this.user.datebirth) {
+            this.yearsOld = moment().diff(this.user.datebirth['seconds'] * 1000, 'years');
+          }
         });
       })
     );

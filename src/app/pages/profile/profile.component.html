@@ -3,7 +3,7 @@
     <div class="profile u-mt50" >
         <mat-card>
             <mat-card-title>
-               {{user?.name ? user?.name : user?.email}}, {{yearsOld}} {{'yearsold' | translate }}
+               {{user?.name ? user?.name : user?.email}} <span *ngIf="yearsOld">, {{yearsOld}} {{'yearsold' | translate }}</span>
             </mat-card-title>
             <mat-card-content>
                 <img [src]="user?.image" [alt]="user?.name" class="rounded-circle mx-auto d-block profile-pic">

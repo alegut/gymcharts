@@ -32,7 +32,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   public downloadUrl: string | null = null;
   public imageChangedEvent: any = '';
   public croppedImage: any = '';
-  startDate = new Date(1990, 0, 1);
+  birthDate: Date = null;
 
 
   constructor(
@@ -53,7 +53,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.auth.currentUser.subscribe(user => {
         this.currentUser = user;
-        if (this.currentUser.datebirth) this.startDate = new Date(this.currentUser.datebirth['seconds'] * 1000);
+        if (this.currentUser.datebirth) this.birthDate = new Date(this.currentUser.datebirth['seconds'] * 1000);
         this.loadingService.isLoading.next(false);
       },
       error => {
@@ -105,14 +105,13 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   public save(): void {
     let photo;
 
-
     if (this.downloadUrl) {
       photo = this.downloadUrl;
     } else {
       photo = this.currentUser.image;
     }
 
-    this.currentUser.datebirth = this.startDate['_d'] || null; 
+    this.currentUser.datebirth = this.birthDate['_d'] || this.birthDate; 
     const user = Object.assign({}, this.currentUser, { image: photo });
     
     const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.id}`);

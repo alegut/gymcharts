@@ -32,9 +32,9 @@
 
         <div>
           <mat-form-field *ngIf="currentUser">
-            <input matInput [matDatepicker]="picker" placeholder="{{'choosedate' | translate}}" [(ngModel)]="startDate">
+            <input matInput [matDatepicker]="picker" placeholder="{{'choosedate' | translate}}" [(ngModel)]="birthDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker startView="year" [startAt]="startDate" value="startDate"></mat-datepicker>
+            <mat-datepicker #picker startView="year" [startAt]="birthDate" value="birthDate"></mat-datepicker>
           </mat-form-field>
         </div>
         <div>
