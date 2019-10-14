@@ -10,11 +10,19 @@ import { Location } from '@angular/common';
 import { User } from 'src/app/interfaces/user';
 import { TranslateService } from '@ngx-translate/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 
 @Component({
   selector: 'st-edit-profile',
   templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.scss']
+  styleUrls: ['./edit-profile.component.scss'],
+  providers: [    
+    { provide: MAT_DATE_LOCALE, useValue: 'uk-UA' },  
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+  ],
+
 })
 export class EditProfileComponent implements OnInit, OnDestroy {
   public currentUser: any = null;
@@ -24,6 +32,8 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   public downloadUrl: string | null = null;
   public imageChangedEvent: any = '';
   public croppedImage: any = '';
+  startDate = new Date(1990, 0, 1);
+
 
   constructor(
     private auth: AuthService,
@@ -33,7 +43,8 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     private db: AngularFirestore,
     private location: Location,
     private utilsService: UtilsService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private adapter: DateAdapter<any>
   ) {
     this.loadingService.isLoading.next(true);
   }
@@ -42,6 +53,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.auth.currentUser.subscribe(user => {
         this.currentUser = user;
+        if (this.currentUser.datebirth) this.startDate = new Date(this.currentUser.datebirth['seconds'] * 1000);
         this.loadingService.isLoading.next(false);
       },
       error => {
@@ -54,12 +66,14 @@ export class EditProfileComponent implements OnInit, OnDestroy {
         this.userId = params.get('userId');
       })
     );
+    
+    const lang = this.utilsService.getCurrentLanguage();
+      this.adapter.setLocale(lang.iso);    
   }
 
   public uploadFile(event): void {
     const file = event.target.files[0];
     const rand = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    console.log(rand);
     // this.ref = this.fs.ref(rand);
     const filePath = `${rand}_${file.name}_${this.currentUser.id}`;
     const task = this.fs.upload(filePath, file);
@@ -98,7 +112,9 @@ export class EditProfileComponent implements OnInit, OnDestroy {
       photo = this.currentUser.image;
     }
 
+    this.currentUser.datebirth = this.startDate['_d'] || null; 
     const user = Object.assign({}, this.currentUser, { image: photo });
+    
     const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.id}`);
     userRef.set(user)
       .then(() => {

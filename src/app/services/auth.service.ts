@@ -43,7 +43,7 @@ export class AuthService {
     const updatedUser = {
       id: user.user.uid,
       email: user.user.email,
-      datebirth: new Date(),
+      datebirth: null,
       height: 0,
       image: 'https://firebasestorage.googleapis.com/v0/b/gymcharts-46e9a.appspot.com/o/body.jpg?alt=media&token=f4ffeaaf-c84e-4b83-86c3-fb372a75ae07',
       name: user.name,

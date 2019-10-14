@@ -34,7 +34,8 @@ export class UtilsService {
     return {
       short: currentLang,
       long: currentLang === 'ru' ? 'На русском' : 'Українською',
-      image: currentLang === 'ru' ? 'assets/images/flags/russia.svg' : 'assets/images/flags/ukraine.svg'
+      image: currentLang === 'ru' ? 'assets/images/flags/russia.svg' : 'assets/images/flags/ukraine.svg',
+      iso: currentLang === 'ru' ? 'ru' : 'uk',
     }
   }
 
@@ -43,7 +44,8 @@ export class UtilsService {
     return {
       short: currentLang === 'ru' ? 'ua' : 'ru',
       long: currentLang === 'ru' ? 'Українською' : 'На русском',
-      image: currentLang === 'ru' ? 'assets/images/flags/ukraine.svg' : 'assets/images/flags/russia.svg'
+      image: currentLang === 'ru' ? 'assets/images/flags/ukraine.svg' : 'assets/images/flags/russia.svg',
+      iso: currentLang === 'ru' ? 'uk' : 'ru',
     }
   }
 }

@@ -28,6 +28,8 @@
   "profileupdated": "Ваш профиль успешно обновлен",
   "profilesavingfailed": "Ваш профиль не обновлен из-за ошибки",
   "imageloadfailed": "Изображение не удалось загрузить",
-  "starttraining": "Начать тренировку"
+  "starttraining": "Начать тренировку",
+  "yearsold": "лет",
+  "choosedate": "Выберите дату"
 
 }

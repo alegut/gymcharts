@@ -6,5 +6,5 @@ export interface User {
     role?: string;
     weight?: number;
     height?: number;
-    datebirth?: Date;
+    datebirth?: Date | null;
 }

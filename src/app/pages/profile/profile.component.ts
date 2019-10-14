@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { LoadingService } from 'src/app/services/loading.service';
 import { User } from 'src/app/interfaces/user';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'st-profile',
@@ -16,6 +18,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public currentUser: any = null;
   public user: User;
   private subscriptions: Subscription[] = [];
+  private yearsOld: number = null;
 
   constructor(
     private auth: AuthService,
@@ -38,6 +41,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
         const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${userId}`);
         userRef.valueChanges().subscribe(user => {
           this.user = user;
+          this.yearsOld = moment().diff(this.user.datebirth['seconds'] * 1000, 'years');
+          
         });
       })
     );

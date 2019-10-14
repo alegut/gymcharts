@@ -28,5 +28,7 @@
   "profileupdated": "Ваш профіль успішно оновлено",
   "profilesavingfailed": "Ваш профіль не оновлений через помилку",
   "imageloadfailed": "Зображення не вдалося завантажити",
-  "starttraining": "Почати тренування"
+  "starttraining": "Почати тренування",
+  "yearsold": "років",
+  "choosedate": "Виберіть дату"
 }

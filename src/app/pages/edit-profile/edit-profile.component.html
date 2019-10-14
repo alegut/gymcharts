@@ -29,6 +29,14 @@
             </div>
           </mat-form-field>
         </div>
+
+        <div>
+          <mat-form-field *ngIf="currentUser">
+            <input matInput [matDatepicker]="picker" placeholder="{{'choosedate' | translate}}" [(ngModel)]="startDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year" [startAt]="startDate" value="startDate"></mat-datepicker>
+          </mat-form-field>
+        </div>
         <div>
           <mat-form-field *ngIf="currentUser">
             <input type="number" placeholder="{{'weight' | translate}}" matInput [(ngModel)]="currentUser.weight" name="weight" #weight="ngModel" required>
