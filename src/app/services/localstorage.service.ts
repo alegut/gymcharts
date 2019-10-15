@@ -14,4 +14,16 @@ export class LocalstorageService {
   getLangFromLs() {
     return localStorage.getItem('lang');
   }
+
+  setTimetToLs() {
+    localStorage.setItem('starttime', (+ new Date()).toString());
+  }
+
+  getTimeFromLs() {
+    return localStorage.getItem('starttime');
+  }
+
+  clearTimeFromLs() {
+    localStorage.removeItem('starttime');
+  }
 }

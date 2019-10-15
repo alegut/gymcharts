@@ -10,6 +10,10 @@
     <a mat-button routerLink="/trainings" routerLinkActive="active" [innerHTML]="'trainings' | translate"></a>
     <a mat-button routerLink="/statistics" [innerHTML]="'statistycs' | translate"></a>
 
+    
+      <st-timer></st-timer>
+    
+
     <a *ngIf="!currentUser" mat-button routerLink="/login" class="header-menu-link-right">Войти</a>
     <!-- <a *ngIf="currentUser" mat-button (click)="logout()" class="header-menu-link-right">Выйти</a> -->
 

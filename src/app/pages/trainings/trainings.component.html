@@ -1,3 +1,8 @@
-<div class="start-training">
-  <button mat-raised-button color="warn">{{'starttraining' | translate | uppercase}}</button>
+<div class="start-training" *ngIf="!startTime">
+  <button mat-raised-button color="warn" (click)="initTraining()">{{'starttraining' | translate | uppercase}}</button>
 </div>
+
+<div class="start-training" *ngIf="!startTime">
+  <h1 style="color: white">Training Started</h1>
+</div>
+
