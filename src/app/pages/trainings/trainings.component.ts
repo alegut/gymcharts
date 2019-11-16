@@ -25,7 +25,8 @@ export class TrainingsComponent implements OnInit {
   initTraining() {
     this.localstorageService.setTimetToLs();
     this.startTime = this.localStorageService.getTimeFromLs();
-    this.trainingService.initTimer('start');
+    this.trainingService.changeTimerStatus('start');
+    this.trainingService.createTraining();
   }
 
 }

@@ -1,3 +1,4 @@
 <mat-toolbar color="warn" class="footer">    
-    <span class="footer-copyright">&#169; Copyright {{currentYear}}. Developed by Oleksii Guzenkov</span>
+    <span *ngIf="!trainingStarted" class="footer-copyright">&#169; Copyright {{currentYear}}. Developed by Oleksii Guzenkov</span>
+    <button mat-raised-button class="header-menu-link-right" (click)="stopTraining()" *ngIf="trainingStarted">Окончить тренировку</button>
 </mat-toolbar>

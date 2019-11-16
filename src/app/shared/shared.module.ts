@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UtilsService } from '../services/utils.service';
-import { TimerComponent } from './timer/timer.component';
-
-
+// import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
-    TimerComponent
+    // TimerComponent
   ],
   imports: [
     CommonModule,
+    
   ],
   exports: [
-    TimerComponent
+    // TimerComponent
   ],
   providers: [
     UtilsService

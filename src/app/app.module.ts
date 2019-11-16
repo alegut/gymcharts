@@ -30,14 +30,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
-
-
-
+import { DeviceDetectorModule } from 'ngx-device-detector';
+import { TimerComponent } from './shared/timer/timer.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
 
 
 @NgModule({
@@ -51,7 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
     TrainingsComponent,
     StatisticsComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
@@ -80,9 +79,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    ImageCropperModule
-
-
+    ImageCropperModule,
+    DeviceDetectorModule.forRoot()
   ],
   providers: [NgxLoadingModule, AuthService, AuthGuard  ],
   bootstrap: [AppComponent]

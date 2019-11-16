@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TrainingService } from 'src/app/services/training.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'st-timer',
-  template: `<span>{{time | lowercase}}</span>`,
-  styles: ['span {font-size: 1.6rem}']
+  templateUrl: './timer.component.html',
+  styleUrls: ['./timer.component.scss'],
+  
 })
 export class TimerComponent implements OnInit {
   time: string = null;
+  timerInterval = null;
 
   constructor(
     private trainingService: TrainingService,
@@ -19,6 +21,8 @@ export class TimerComponent implements OnInit {
     this.trainingService.timerStatus$.subscribe((status: string) => {
       if(status === 'start') {
         this.startTimer();
+      } else {
+        this.stopTraining();
       }
     })
   }
@@ -26,7 +30,7 @@ export class TimerComponent implements OnInit {
   startTimer() {
     const startTime = this.localStorageService.getTimeFromLs();
     if (!startTime) return;
-    setInterval(() => {
+    this.timerInterval = setInterval(() => {
       const diff = Math.round((+ new Date() - (+startTime)) / 1000);
       this.time = this.getTimer(diff);
     }, 1000)
@@ -45,6 +49,12 @@ export class TimerComponent implements OnInit {
       minutes = minutes < 10 ? '0' + minutes : minutes,
       seconds = seconds < 10 ? '0' + seconds : seconds,
     ].join(':');
+  }
+
+  stopTraining() {
+    this.localStorageService.clearTimeFromLs();
+    this.time = null;
+    clearInterval(this.timerInterval)
   }
 
 }

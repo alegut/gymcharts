@@ -4,6 +4,7 @@ import { LocalstorageService } from './../../services/localstorage.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 
 
@@ -21,12 +22,14 @@ export class HeaderComponent implements OnInit {
     public authService: AuthService,
     public translate: TranslateService,
     private localstorageService: LocalstorageService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private deviceService: DeviceDetectorService
   ) {
 
   }
 
   ngOnInit() {
+    this.detectMobile();
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
@@ -42,9 +45,12 @@ export class HeaderComponent implements OnInit {
     this.lang = this.utilsService.getOppositeLanguage();
   }
 
-
   logout() {
     this.authService.logout();
+  }
+
+  detectMobile() {    
+    return this.deviceService.isMobile();
   }
 
 }

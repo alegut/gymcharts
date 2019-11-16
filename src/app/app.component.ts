@@ -23,7 +23,6 @@ export class AppComponent implements  OnInit, OnDestroy{
     private localstorageService: LocalstorageService
   ){
     translate.setDefaultLang('ru');
-
   }
 
   ngOnInit(){
@@ -37,8 +36,6 @@ export class AppComponent implements  OnInit, OnDestroy{
       this.localstorageService.setLangToLs('ru');
     }
   }
-
-
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
